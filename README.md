@@ -9,33 +9,6 @@
  
 == bundle.js created by ReactJS is not up-to-date ==
 1. Typically, ReactJS constantly update static/built/bundle.js
-2. tomcat won't reload static/built/bundle.js everytime, which is unacceptable in developing.
-3. the solution is found in stackflow: https://stackoverflow.com/a/24764196
-4. generally speaking, this solution requires ReactJS to place bundle.js under src/main/webapp/built
-5. the problem is that everything in webapp is not exposed by default, so we need maven-resource-plugin to always copy files in src/main/webapp/built to src/main/resources/static/built
-6. Also, remove devtools. Devtool cause unexpect caching for bundle.js. I wish to solve this problem one day, since devtool is actually very helpful.
-7. Here is the code for pom.xml:
-```
-<plugin>
-    <artifactId>maven-resources-plugin</artifactId>
-    <version>2.6</version>
-    <executions>
-        <execution>
-            <id>copy-resources</id>
-            <phase>validate</phase>
-            <goals>
-                <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-                <outputDirectory>${basedir}/target/classes/static/built</outputDirectory>
-                <resources>
-                    <resource>
-                        <directory>src/main/webapp/built</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                </resources>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-```
+2. Using Eclipse, you have to manually open bundle.js and save it, to trigger deployment on the embedded saver
+3. this is stupid, hope to fix it somehow
+4. bundle.js is a huge file, so open it with text editer to reduce the lag.
