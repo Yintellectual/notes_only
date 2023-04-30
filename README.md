@@ -11,8 +11,8 @@
 1. Typically, ReactJS constantly update static/built/bundle.js
 2. tomcat won't reload static/built/bundle.js everytime, which is unacceptable in developing.
 3. the solution is found in stackflow: https://stackoverflow.com/a/24764196
-4. generally speaking, this solution requires ReactJS to place built/bundle.js under src/main/webapp
-5. the problem is that everything in webapp is not exposed by default, so we need maven-resource-plugin to always copy files in src/main/webapp to src/main/resources/static
+4. generally speaking, this solution requires ReactJS to place bundle.js under src/main/webapp/built
+5. the problem is that everything in webapp is not exposed by default, so we need maven-resource-plugin to always copy files in src/main/webapp/built to src/main/resources/static/built
 6. Here is the code for pom.xml:
 ```
 <plugin>
@@ -26,10 +26,10 @@
                 <goal>copy-resources</goal>
             </goals>
             <configuration>
-                <outputDirectory>${basedir}/target/classes/static</outputDirectory>
+                <outputDirectory>${basedir}/target/classes/static/built</outputDirectory>
                 <resources>
                     <resource>
-                        <directory>src/main/webapp</directory>
+                        <directory>src/main/webapp/built</directory>
                         <filtering>true</filtering>
                     </resource>
                 </resources>
