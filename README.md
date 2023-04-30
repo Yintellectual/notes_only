@@ -14,8 +14,8 @@
 4. generally speaking, this solution requires ReactJS to place built/bundle.js under src/main/webapp
 5. the problem is that everything in webapp is not exposed by default, so we need maven-resource-plugin to always copy files in src/main/webapp to src/main/resources/static
 6. Here is the code for pom.xml:
-
-```<plugin>
+```
+<plugin>
     <artifactId>maven-resources-plugin</artifactId>
     <version>2.6</version>
     <executions>
@@ -36,4 +36,5 @@
             </configuration>
         </execution>
     </executions>
-</plugin>```
+</plugin>
+```
