@@ -13,7 +13,8 @@
 3. the solution is found in stackflow: https://stackoverflow.com/a/24764196
 4. generally speaking, this solution requires ReactJS to place bundle.js under src/main/webapp/built
 5. the problem is that everything in webapp is not exposed by default, so we need maven-resource-plugin to always copy files in src/main/webapp/built to src/main/resources/static/built
-6. Here is the code for pom.xml:
+6. Also, remove devtools. Devtool cause unexpect caching for bundle.js. I wish to solve this problem one day, since devtool is actually very helpful.
+7. Here is the code for pom.xml:
 ```
 <plugin>
     <artifactId>maven-resources-plugin</artifactId>
