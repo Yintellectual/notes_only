@@ -12,3 +12,23 @@
 2. Using Eclipse, you have to manually open bundle.js and save it, to trigger deployment on the embedded saver
 3. this is stupid, hope to fix it somehow
 4. bundle.js is a huge file, so open it with text editer to reduce the lag.
+
+
+== Enable CORS for Spring Rest Data ==
+[reference](https://github.com/spring-projects/spring-data-rest/blob/main/src/main/asciidoc/configuring-cors.adoc)
+```
+@Component
+public class SpringDataRestCustomization implements RepositoryRestConfigurer {
+
+  @Override
+  public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+
+    cors.addMapping("/person/**")
+      .allowedOrigins("http://domain2.example")
+      .allowedMethods("PUT", "DELETE")
+      .allowedHeaders("header1", "header2", "header3")
+      .exposedHeaders("header1", "header2")
+      .allowCredentials(false).maxAge(3600);
+  }
+}
+```
