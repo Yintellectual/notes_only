@@ -32,3 +32,40 @@ public class SpringDataRestCustomization implements RepositoryRestConfigurer {
   }
 }
 ```
+
+
+== Promise, then, await in js ==
+
+In modern javascript, remote calls like fetch() usually return a Promise instead of data directly. To use the data inside a Promise, there are 2 ways:
+[reference: Javascript: How to access the return value of a Promise object](https://dev.to/ramonak/javascript-how-to-access-the-return-value-of-a-promise-object-1bck)
+1. using Promise.then()
+```
+const address = fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then((response) => response.json())
+  .then((user) => {
+    return user.address;
+  });
+
+const printAddress = () => {
+  address.then((a) => {
+    console.log(a);
+  });
+};
+
+printAddress();
+```
+2. using async / await syntax
+```
+const address = fetch("https://jsonplaceholder.typicode.com/users/1")
+  .then((response) => response.json())
+  .then((user) => {
+    return user.address;
+  });
+
+const printAddress = async () => {
+  const a = await address;
+  console.log(a);
+};
+
+printAddress();
+```
