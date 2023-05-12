@@ -71,6 +71,17 @@ printAddress();
 ```
 
 
-== Free SVG Icons ==
+== Tailwind Buildin Free SVG Icons ==
 
-[here's a free SVG Icon website](https://www.svgrepo.com/)
+Search icons in [https://heroicons.com/](https://heroicons.com/). 
+Use icons like:
+```
+<ChevronRightIcon className="h-6 w-6">
+```
+
+
+== NextJS Toggle Display ==
+Best practice:
+```
+<div style={showMyComponent? {}:{display:"none"}}>
+```
