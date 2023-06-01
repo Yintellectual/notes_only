@@ -85,3 +85,13 @@ Best practice:
 ```
 <div style={showMyComponent? {}:{display:"none"}}>
 ```
+
+
+== Git Rest ==
+
+The commands to discard all local changes in Git are:
+```
+git reset –-hard
+git clean -fxd
+```
+note that "git clean -fxd" deletes new files that are uncommited. 
